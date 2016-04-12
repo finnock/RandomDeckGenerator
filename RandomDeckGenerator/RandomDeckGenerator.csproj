@@ -50,28 +50,89 @@
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Spiele\Hearthstone Deck Tracker\System.Windows.Interactivity.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\MenuItem.xaml.cs">
-      <DependentUpon>MenuItem.xaml</DependentUpon>
+    <Compile Include="CardLists.cs" />
+    <Compile Include="Controls\MainFlyout.xaml.cs">
+      <DependentUpon>MainFlyout.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\PluginsMenuItem.xaml.cs">
+      <DependentUpon>PluginsMenuItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DeckGeneration.cs" />
+    <Compile Include="HelperClass.cs" />
+    <Compile Include="MainClass.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Controls\MenuItem.xaml">
+    <Page Include="Controls\MainFlyout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\PluginsMenuItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\classes\238x238\druid.png" />
+    <Resource Include="Resources\classes\238x238\hunter.png" />
+    <Resource Include="Resources\classes\238x238\mage.png" />
+    <Resource Include="Resources\classes\238x238\paladin.png" />
+    <Resource Include="Resources\classes\238x238\priest.png" />
+    <Resource Include="Resources\classes\238x238\rogue.png" />
+    <Resource Include="Resources\classes\238x238\shaman.png" />
+    <Resource Include="Resources\classes\238x238\warlock.png" />
+    <Resource Include="Resources\classes\238x238\warrior.png" />
+    <Resource Include="Resources\classes\50x50bw\druid.png" />
+    <Resource Include="Resources\classes\50x50bw\hunter.png" />
+    <Resource Include="Resources\classes\50x50bw\mage.png" />
+    <Resource Include="Resources\classes\50x50bw\paladin.png" />
+    <Resource Include="Resources\classes\50x50bw\priest.png" />
+    <Resource Include="Resources\classes\50x50bw\rogue.png" />
+    <Resource Include="Resources\classes\50x50bw\shaman.png" />
+    <Resource Include="Resources\classes\50x50bw\warlock.png" />
+    <Resource Include="Resources\classes\50x50bw\warrior.png" />
+    <Resource Include="Resources\classes\50x50\druid.png" />
+    <Resource Include="Resources\classes\50x50\hunter.png" />
+    <Resource Include="Resources\classes\50x50\mage.png" />
+    <Resource Include="Resources\classes\50x50\paladin.png" />
+    <Resource Include="Resources\classes\50x50\priest.png" />
+    <Resource Include="Resources\classes\50x50\rogue.png" />
+    <Resource Include="Resources\classes\50x50\shaman.png" />
+    <Resource Include="Resources\classes\50x50\warlock.png" />
+    <Resource Include="Resources\classes\50x50\warrior.png" />
+    <Resource Include="Resources\standard\RandomLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\standard\brm_bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\standard\loe_bg.png" />
+    <Resource Include="Resources\standard\naxx_bg.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy /Y "$(TargetDir)$(TargetFileName)" "C:\Spiele\Hearthstone Deck Tracker\Plugins\$(TargetFileName)"
+"C:\Spiele\Hearthstone Deck Tracker\Hearthstone Deck Tracker.exe"</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

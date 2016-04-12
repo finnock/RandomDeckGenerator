@@ -1,0 +1,262 @@
+﻿<UserControl x:Class="Finnock.HDT.Plugins.RandomDeckGenerator.Controls.MainFlyout"
+             x:Name="ctrMain"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d" 
+             Height="Auto" Width="521"
+             HorizontalAlignment="Center" VerticalAlignment="Top">
+    <UserControl.Resources>
+        <Style x:Key="NoChromeButton" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid x:Name="Chrome" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Foreground" Value="#ADADAD"/>
+                                <Setter Property="Opacity" TargetName="Chrome" Value="0.5"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <StackPanel x:Name="stkMain" Margin="10,15,10,15">
+        <Expander x:Name="expBasic" IsExpanded="False">
+            <Expander.Header>
+                <Grid Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Expander}}, Path=ActualWidth}">
+                    <Label Content="BASIC CARDS: LEVEL 10 CLASSES" HorizontalAlignment="Left" Padding="0"/>
+                    <Label Content="9 / 9" HorizontalAlignment="Right" Margin="0 0 45 0"  Padding="0"/>
+                </Grid>
+            </Expander.Header>
+            <StackPanel x:Name="stkBasic" Orientation="Horizontal" HorizontalAlignment="Center" >
+                <Button Style="{DynamicResource NoChromeButton}" x:Name="btnBasicWarrior" Click="btnBasicWarrior_Click">
+                    <Image x:Name="imgBasicWarrior" Height="50" Source="/RandomDeckGenerator;component/Resources/classes/50x50/warrior.png" />
+                </Button>
+                <Button Style="{DynamicResource NoChromeButton}">
+                    <Image x:Name="imgBasicShaman" Height="50" Source="/RandomDeckGenerator;component/Resources/classes/50x50/shaman.png" />
+                </Button>
+                <Button Style="{DynamicResource NoChromeButton}">
+                    <Image x:Name="imgBasicRogue" Height="50" Source="/RandomDeckGenerator;component/Resources/classes/50x50/rogue.png" />
+                </Button>
+                <Button Style="{DynamicResource NoChromeButton}">
+                    <Image x:Name="imgBasicPaladin" Height="50" Source="/RandomDeckGenerator;component/Resources/classes/50x50/paladin.png" />
+                </Button>
+                <Button Style="{DynamicResource NoChromeButton}">
+                    <Image x:Name="imgBasicHunter" Height="50" Source="/RandomDeckGenerator;component/Resources/classes/50x50/hunter.png" />
+                </Button>
+                <Button Style="{DynamicResource NoChromeButton}">
+                    <Image x:Name="imgBasicDruid" Height="50" Source="/RandomDeckGenerator;component/Resources/classes/50x50/druid.png" />
+                </Button>
+                <Button Style="{DynamicResource NoChromeButton}">
+                    <Image x:Name="imgBasicWarlock" Height="50" Source="/RandomDeckGenerator;component/Resources/classes/50x50/warlock.png" />
+                </Button>
+                <Button Style="{DynamicResource NoChromeButton}">
+                    <Image x:Name="imgBasicMage" Height="50" Source="/RandomDeckGenerator;component/Resources/classes/50x50/mage.png" />
+                </Button>
+                <Button Style="{DynamicResource NoChromeButton}">
+                    <Image x:Name="imgBasicPriest" Height="50" Source="/RandomDeckGenerator;component/Resources/classes/50x50/priest.png" />
+                </Button>
+            </StackPanel>
+        </Expander>
+        <Expander x:Name="expAdventures" IsExpanded="False" Padding="0">
+            <Expander.Header>
+                <Grid Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Expander}}, Path=ActualWidth}">
+                    <Label Padding="0" Content="ADVENTURES" HorizontalAlignment="Left" Margin="0 0 0 0"/>
+                    <Label Padding="0" Content="14 / 14" HorizontalAlignment="Right" Margin="0 0 45 0"/>
+                </Grid>
+            </Expander.Header>
+            <StackPanel>
+                <StackPanel Margin="0" Height="187">
+                    <StackPanel.Background>
+                        <ImageBrush ImageSource="/RandomDeckGenerator;component/Resources/standard/naxx_bg.png" TileMode="FlipX" 
+                                    Viewport="0,0,489,187" ViewportUnits="Absolute"/>
+                    </StackPanel.Background>
+                    <StackPanel Margin="20 0 0 0">
+                        <CheckBox x:Name="cbNaxx" Click="cbNaxx_Checked" Content="Naxxramas" IsChecked="True" Margin="0 10 0 10"/>
+                        <StackPanel Margin="5 0 0 0">
+                            <CheckBox x:Name="cbNaxx1" Click="cbNaxxWing_Checked" Content="Arachnid Quarter"  Margin="5" IsChecked="True"/>
+                            <CheckBox x:Name="cbNaxx2" Click="cbNaxxWing_Checked" Content="Plaque Quarter"    Margin="5" IsChecked="True" Grid.Row="0" Grid.Column="1"/>
+                            <CheckBox x:Name="cbNaxx3" Click="cbNaxxWing_Checked" Content="Military Quarter"  Margin="5" IsChecked="True" Grid.Row="1" Grid.Column="0"/>
+                            <CheckBox x:Name="cbNaxx4" Click="cbNaxxWing_Checked" Content="Construct Quarter" Margin="5" IsChecked="True" Grid.Row="1" Grid.Column="1"/>
+                            <CheckBox x:Name="cbNaxx5" Click="cbNaxxWing_Checked" Content="Frostwyrm Lair"    Margin="5" IsChecked="True" Grid.Row="2" Grid.Column="0"/>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Margin="0" Height="187">
+                    <StackPanel.Background>
+                        <ImageBrush ImageSource="/RandomDeckGenerator;component/Resources/standard/brm_bg.png" TileMode="FlipX" 
+                                    Viewport="0,0,489,187" ViewportUnits="Absolute"/>
+                    </StackPanel.Background>
+                    <StackPanel Margin="20 0 0 0">
+                        <CheckBox x:Name="cbBrm" Click="cbBrm_Checked" Content="Black Rock Mountain" IsChecked="True" Margin="0 10 0 10"/>
+                        <StackPanel Margin="5,0,0,0">
+                            <CheckBox x:Name="cbBrm1" Click="cbBrmWing_Checked" Content="Blackrock Depths"  Margin="5" IsChecked="True"/>
+                            <CheckBox x:Name="cbBrm2" Click="cbBrmWing_Checked" Content="Molten Core"       Margin="5" IsChecked="True" Grid.Row="0" Grid.Column="1"/>
+                            <CheckBox x:Name="cbBrm3" Click="cbBrmWing_Checked" Content="Blackrock Spire"   Margin="5" IsChecked="True" Grid.Row="1" Grid.Column="0"/>
+                            <CheckBox x:Name="cbBrm4" Click="cbBrmWing_Checked" Content="Blackwing Lair"    Margin="5" IsChecked="True" Grid.Row="1" Grid.Column="1"/>
+                            <CheckBox x:Name="cbBrm5" Click="cbBrmWing_Checked" Content="Hidden Laboratory" Margin="5" IsChecked="True" Grid.Row="2" Grid.Column="0"/>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Margin="0" Height="187">
+                    <StackPanel.Background>
+                        <ImageBrush ImageSource="/RandomDeckGenerator;component/Resources/standard/loe_bg.png" TileMode="FlipX" 
+                                    Viewport="0,0,489,187" ViewportUnits="Absolute"/>
+                    </StackPanel.Background>
+                    <StackPanel Margin="20 0 0 0">
+                        <CheckBox x:Name="cbLoE" Click="cbLoE_Checked" Content="League of Explorers" IsChecked="True" Margin="0 10 0 10"/>
+                        <StackPanel Margin="5,0,0,0">
+                            <CheckBox x:Name="cbLoE1" Click="cbLoEWing_Checked" Content="Temple of Orsis"   Margin="5" IsChecked="True"/>
+                            <CheckBox x:Name="cbLoE2" Click="cbLoEWing_Checked" Content="Uldaman"           Margin="5" IsChecked="True" Grid.Row="0" Grid.Column="1"/>
+                            <CheckBox x:Name="cbLoE3" Click="cbLoEWing_Checked" Content="The Ruined City"   Margin="5" IsChecked="True" Grid.Row="1" Grid.Column="0"/>
+                            <CheckBox x:Name="cbLoE4" Click="cbLoEWing_Checked" Content="Hall of Explorers" Margin="5" IsChecked="True" Grid.Row="1" Grid.Column="1"/>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </Expander>
+        <Expander x:Name="expHCT" IsExpanded="True">
+            <Expander.Header>
+                <Grid Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Expander}}, Path=ActualWidth}">
+                    <Label Padding="0" Content="HEARTHSTONE COLLECTION TRACKER" HorizontalAlignment="Left" Margin="0 0 0 0"/>
+                    <Label Padding="0" Content="LOADED" HorizontalAlignment="Right" Margin="0 0 45 0"/>
+                </Grid>
+            </Expander.Header>
+            <StackPanel>
+                <Grid Margin="20,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Label Content="Classic Cards:"        Grid.Row="0" Grid.Column="0"/>
+                    <Label Content="000/457"               Grid.Row="0" Grid.Column="1"/>
+                    <Label Content="Gnomes vs Goblins:"    Grid.Row="1" Grid.Column="0"/>
+                    <Label Content="000/226"               Grid.Row="1" Grid.Column="1"/>
+                    <Label Content="The Grand Tournament:" Grid.Row="2" Grid.Column="0"/>
+                    <Label Content="200/244"               Grid.Row="2" Grid.Column="1"/>
+                </Grid>
+            </StackPanel>
+        </Expander>
+        <Expander x:Name="expRandom" IsExpanded="True">
+            <Expander.Header>
+                <Grid Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Expander}}, Path=ActualWidth}">
+                    <Label Padding="0" Content="RANDOM DECK SETTINGS" HorizontalAlignment="Left" Margin="0 0 0 0"/>
+                    <Label Padding="0" Content="TOTAL: 850/1035" HorizontalAlignment="Right" Margin="0 0 45 0"/>
+                </Grid>
+            </Expander.Header>
+            <StackPanel>
+                <Grid Margin="20 0 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Label    Grid.Row="0" Grid.Column="0" Content="Class" VerticalAlignment="Center" Margin="10"/>
+                    <ComboBox Grid.Row="0" Grid.Column="1" x:Name="combSelectedClass" Height="40" Width="Auto" Margin="10">
+                        <ComboBoxItem IsSelected="True" Name="Warrior">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Height="30" Width="30"  x:Name="imgClassSelectorWarrior"  Source="/RandomDeckGenerator;component/Resources/classes/50x50/warrior.png" RenderOptions.BitmapScalingMode="Fant"/>
+                                <Label Content="Warrior"/>
+                            </StackPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem Name="Shaman">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Height="30" Width="30"  x:Name="imgClassSelectorShaman"  Source="/RandomDeckGenerator;component/Resources/classes/50x50/shaman.png" />
+                                <Label Content="Shaman"/>
+                            </StackPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem Name="Rogue">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Height="30" Width="30"  x:Name="imgClassSelectorRogue"  Source="/RandomDeckGenerator;component/Resources/classes/50x50/rogue.png" />
+                                <Label Content="Rogue"/>
+                            </StackPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem Name="Paladin">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Height="30" Width="30"  x:Name="imgClassSelectorPaladin"  Source="/RandomDeckGenerator;component/Resources/classes/50x50/paladin.png" />
+                                <Label Content="Paladin"/>
+                            </StackPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem Name="Hunter">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Height="30" Width="30"  x:Name="imgClassSelectorHunter"  Source="/RandomDeckGenerator;component/Resources/classes/50x50/hunter.png" />
+                                <Label Content="Hunter"/>
+                            </StackPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem Name="Druid">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Height="30" Width="30"  x:Name="imgClassSelectorDruid"  Source="/RandomDeckGenerator;component/Resources/classes/50x50/druid.png" />
+                                <Label Content="Druid"/>
+                            </StackPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem Name="Warlock">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Height="30" Width="30"  x:Name="imgClassSelectorWarlock" Source="/RandomDeckGenerator;component/Resources/classes/50x50/warlock.png" />
+                                <Label Content="Warlock"/>
+                            </StackPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem Name="Mage">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Height="30" Width="30"  x:Name="imgClassSelectorMage" Source="/RandomDeckGenerator;component/Resources/classes/50x50/mage.png" />
+                                <Label Content="Mage"/>
+                            </StackPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem Name="Priest">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Height="30" Width="30"  x:Name="imgClassSelectorPriest"  Source="/RandomDeckGenerator;component/Resources/classes/50x50/priest.png" />
+                                <Label Content="Priest"/>
+                            </StackPanel>
+                        </ComboBoxItem>
+                    </ComboBox>
+                    <Button   Grid.Row="0" Grid.Column="2" Content="Random Class" Width="Auto" Height="20" IsEnabled="True" Click="Button_Click"/>
+                    <Label    Grid.Row="1" Grid.Column="0" Content="DeckName" Margin="10"/>
+                    <TextBox  Grid.Row="1" Grid.Column="1" x:Name="tbDeckName" Margin="10">RandomDeck</TextBox>
+                    <Label x:Name="randomLabel" Content="" Grid.Column="2" HorizontalAlignment="Left" Margin="118,20,-38,0" VerticalAlignment="Top"/>
+                </Grid>
+            </StackPanel>
+        </Expander>
+        <StackPanel Orientation="Horizontal" Width="300">
+            <Button x:Name="btnGenerateRandomDeck" Content="Generate Deck" Width="140" Margin="5" Click="btnGenerateRandomDeck_Click"/>
+            <Button x:Name="btnGenerateExportRandomDeck" Content="Generate and Export" Width="140" Margin="5" Click="btnGenerateExportRandomDeck_Click"/>
+        </StackPanel>
+        <Expander x:Name="expDebug" IsExpanded="True">
+            <Expander.Header>
+                <Grid Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Expander}}, Path=ActualWidth}">
+                    <Label Padding="0" Content="POWERING UP..." HorizontalAlignment="Left" Margin="0 0 0 0"/>
+                    <Label Padding="0" Content="PORTALS ONLINE!" HorizontalAlignment="Right" Margin="0 0 45 0"/>
+                </Grid>
+            </Expander.Header>
+            <StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <Label Content="X:" />
+                    <TextBox Width="150" x:Name="tbDebugX"></TextBox>
+                    <Label Content="Y:" />
+                    <TextBox Width="150" x:Name="tbDebugY"></TextBox>
+                </StackPanel>
+                <Button Content="Click X/Y" x:Name="btnDebugClickXY" Width="140" HorizontalAlignment="Left" Margin="5" Click="btnDebugClickXY_Click"/>
+            </StackPanel>
+        </Expander>
+    </StackPanel>
+</UserControl>
